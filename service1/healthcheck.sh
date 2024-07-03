@@ -2,7 +2,7 @@
 
 # Health check script for your Spring Boot application
 
-response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://localhost:8080/actuator/health)
+response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://localhost:8081/actuator/health)
 
 if [ "$response" -eq 200 ]; then
   echo "Application is healthy"
