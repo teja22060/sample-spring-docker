@@ -12,10 +12,10 @@ services:
       - "8081:8080" # Adjust ports as necessary
     healthcheck:
       test: ["CMD-SHELL", "/app/healthcheck.sh"]
-      interval: 30s
+      interval: 3s
       timeout: 10s
       retries: 5
-      start_period: 30s
+      start_period: 2s
     networks:
       - mynetwork
 
