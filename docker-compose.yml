@@ -5,9 +5,17 @@ services:
     build:
       context: ./service1
       dockerfile: Dockerfile
+    entrypoint: ["/app/entrypoint.sh"]
+    command: ["/app/startup.sh"]
     container_name: service1-container
     ports:
       - "8081:8080" # Adjust ports as necessary
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     networks:
       - mynetwork
 
